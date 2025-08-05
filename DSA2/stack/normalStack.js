@@ -1,3 +1,4 @@
+//stack using array
 class Stack{
     constructor(){
         this.stack=[];

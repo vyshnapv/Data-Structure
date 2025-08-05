@@ -19,3 +19,21 @@ function reverse(s){
 
 let str="hello how are you";
 console.log(reverse(str))
+
+
+//reverse a string
+function reverse(str){
+    let stack=[];
+    for(let i=0;i<str.length;i++){
+        stack.push(str[i])
+    }
+    let reversed="";
+    for(let i=0;i<str.length;i++){
+        reversed+=stack.pop();
+    }
+    return reversed;
+}
+
+let input="hello";
+let outPut=reverse(input);
+console.log(outPut)

@@ -1,7 +1,4 @@
 //bubble sort
-//here we use nested loop a for loop and a do while loop.
-//so the time complexity is quadratic -o(n^2);
-
 function bubbleSort(arr){
     let swapped;
     do{
@@ -26,9 +23,9 @@ function bubble(arr){
     let swapp;
     do{
         swapp=false
-        for(let i=0;i<arr.length;i++){
+        for(let i=0;i<arr.length-1;i++){
             if(arr[i]>arr[i+1]){
-                [arr[i+1],arr[i]]=[arr[i],arr[i+1]]
+                [arr[i],arr[i+1]]=[arr[i+1],arr[i]]
                 swapp=true
             }
         }
@@ -38,3 +35,17 @@ function bubble(arr){
 
 const arr=[3,7,4,7,3,7,3,7,3,8,4,7]
 console.log(bubble(arr));
+
+//aslo use this 
+function bubbleSort(arr){
+    for(let i=0;i<arr.length-1;i++){
+        for(let j=0;j<arr.length-1;j++){
+            if(arr[j]>arr[j+1]){
+                [arr[j],arr[j+1]]=[arr[j+1],arr[j]]
+            }
+        }
+    }
+    return arr;
+}
+let nums=[5,3,4,1];
+console.log(bubbleSort(nums))

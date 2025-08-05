@@ -30,7 +30,6 @@ class LinkedList{
         while(curr.next){
             curr=curr.next;
         }
-        newNode.next=curr.next;
         curr.next=newNode;
     }
     
@@ -64,7 +63,7 @@ class LinkedList{
             return;
         }
         let curr=this.head;
-        while(curr && curr.value!==target){
+        while(curr.next && curr.next.value!==target){
             curr=curr.next;
         }
          if(!curr){

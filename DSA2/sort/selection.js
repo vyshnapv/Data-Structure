@@ -1,14 +1,14 @@
 //selection sort
 function selectSort(arr){
     for(let i=0;i<arr.length-1;i++){
-        let min=i;
+        let max=i;
         for(let j=i+1;j<arr.length;j++){
-            if(arr[j]<arr[min]){
-                min=j;
+            if(arr[j]<arr[max]){
+                max=j;
             }
         }
-        if(min!==i){
-            [arr[i],arr[min]]=[arr[min],arr[i]]
+        if(max!==i){
+            [arr[i],arr[max]]=[arr[max],arr[i]]
         }
     }
     return arr;
