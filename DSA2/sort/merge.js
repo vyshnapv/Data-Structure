@@ -63,35 +63,20 @@ console.log(sortedStr);
 
 //merge 2 sorted array
 function merge(arr1,arr2){
-    let result=[];
-    let i=0,j=0
-    
-    while(i<arr1.length && j<arr2.length){
-       if(arr1[i]<=arr2[j]){
-          result.push(arr1[i])
-           i++
+   let sorted=[];
+   while(arr1.length && arr2.length){
+       if(arr1[0]<=arr2[0]){
+           sorted.push(arr1.shift())
        }else{
-           result.push(arr2[j])
-           j++;
+            sorted.push(arr2.shift())
        }
-    }
-    
-    while(i<arr1.length){
-        result.push(arr1[i])
-        i++;
-    }
-    
-    while(j<arr2.length){
-        result.push(arr2[j])
-        j++;
-    }
-    
-    return result;
+   }
+   return [...sorted,...arr1,...arr2]
 }
 
-const arr1 = [1, 3, 5, 7];
-const arr2 = [2, 4, 6, 8];
-console.log(merge(arr1,arr2));
+let arr1=[1,3,5,7]
+let arr2=[2,4,6,8]
+console.log(merge(arr1,arr2))
 
 //sort array of object based on amount property
 function sorting(obj){
@@ -122,7 +107,6 @@ const items = [
   { name: 'Banana', amount: 20 },
   { name: 'Cherry', amount: 30 }
 ];
-
 const sortedItems = sorting(items);
 console.log(sortedItems);
 

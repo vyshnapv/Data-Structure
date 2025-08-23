@@ -16,7 +16,7 @@ function quickSort(arr){
     return [...quickSort(left),pivot,...quickSort(right)];
 }
 
-let arr=[78.45,13,-13,-23,90,-56];
+let arr=[78,45,13,-13,-23,90,-56];
 console.log(quickSort(arr))
 
 //quick sort in best case

@@ -56,3 +56,25 @@ function hasDuplicates(str) {
 }
 console.log(hasDuplicates("hello"));  
 console.log(hasDuplicates("world")); 
+
+//find 3rd largest element from an unsorted array
+let arr=[34,6,12,98,45,456]
+let largest=-Infinity
+let second=-Infinity
+let third=-Infinity
+for(let i=0;i<arr.length;i++){
+    if(arr[i]>largest){
+        third=second;
+        second=largest;
+        largest=arr[i]
+    }else if(arr[i]>second && arr[i]!=largest){
+        third=second;
+        second=arr[i]
+    }else if(arr[i]>third && arr[i]!=second && arr[i!=largest]){
+        third=arr[i]
+    }
+}
+
+console.log(third)
+console.log(second)
+console.log(largest)

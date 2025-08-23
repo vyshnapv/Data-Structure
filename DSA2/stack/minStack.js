@@ -1,15 +1,16 @@
+//find the minimum element in this stack
 class Stack{
     constructor(){
         this.stack=[];
-        this.max=[]
+        this.min=[]
     }
     
    push(value){
        this.stack.push(value);
-       if(this.max.length===0 || value>=this.getMax()){
-           this.max.push(value)
+       if(this.min.length===0 || value<=this.getmin()){
+           this.min.push(value)
        }else{
-           this.max.push(this.getMax())
+           this.min.push(this.getmin())
        }
    }
     
@@ -17,7 +18,6 @@ class Stack{
         if(this.isEmpty()){
             return "stack underflow"
         }
-        this.max.pop(); 
         return this.stack.pop()
     }
     
@@ -28,11 +28,11 @@ class Stack{
         return this.stack[this.stack.length-1]
     }
     
-    getMax(){
-        if(this.max.length===0){
+    getmin(){
+        if(this.min.length===0){
             return null;
         }
-        return this.max[this.max.length-1]
+        return this.min[this.min.length-1]
     }
 
     
@@ -50,5 +50,5 @@ sk.push(76)
 sk.push(12)
 sk.push(37)
 sk.push(92)
-console.log(sk.getMax())
+console.log(sk.getmin())
 sk.print()

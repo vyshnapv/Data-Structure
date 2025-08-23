@@ -1,25 +1,42 @@
-//remove duplicate values
 class Stack{
     constructor(){
         this.stack=[];
     }
     
     push(value){
-        if(!this.stack.includes(value)){
-            this.stack.push(value)
-        }else{
-            console.log(`Duplicate value ${value} rejected`)
-        }
+     if(!this.stack.includes(value)){
+         this.stack.push(value)
+     }else{
+         console.log(`Duplicate value ${value} is rejected`)
+     }
     }
     
-    print() {
-        console.log(this.stack.join(" -> "));
+    pop(){
+        if(this.isEmpty()){
+            return "stack underflow"
+        }
+        return this.stack.pop()
+    }
+    
+    peek(){
+        if(this.isEmpty()){
+            return "stack is empty"
+        }
+        return this.stack[this.stack.length-1]
+    }
+    
+    isEmpty(){
+        return this.stack.length===0
+    }
+    
+    print(){
+        console.log(this.stack)
     }
 }
 
-const s = new Stack();
-s.push(10);
-s.push(20);
-s.push(10);
-s.push(30);
-s.print(); 
+let sk=new Stack();
+sk.push(76)
+sk.push(12)
+sk.push(37)
+sk.push(12)
+sk.print()

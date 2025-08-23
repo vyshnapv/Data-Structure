@@ -10,16 +10,18 @@ class Stack{
     
     pop(){
         if(this.isEmpty()){
-            return "stack is empty"
+            console.log("stack underflow")
+            return;
         }
         return this.stack.pop()
     }
     
     peek(){
-        if(this.isEmpty()){
-            return "stack is empty"
+         if(this.isEmpty()){
+            console.log("stack is empty")
+            return;
         }
-        return this.stack[this.size()-1]
+        return this.stack[this.stack.length-1]
     }
     
     isEmpty(){
@@ -27,7 +29,7 @@ class Stack{
     }
     
     size(){
-        return this.stack.length;
+       return this.stack.length
     }
     
     print(){
@@ -35,12 +37,15 @@ class Stack{
     }
 }
 
-let stack=new Stack();
-stack.push(56)
-stack.push(36)
-stack.push(91)
-stack.push(67)
-stack.print()
-stack.pop()
-stack.print()
-console.log(stack.peek())
+const sk=new Stack();
+sk.push(67)
+sk.push(89)
+sk.push(45)
+sk.push(14)
+sk.print()
+sk.pop()
+sk.print()
+console.log(sk.peek())
+console.log(sk.isEmpty())
+console.log(sk.size())
+
