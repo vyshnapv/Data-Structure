@@ -307,6 +307,7 @@ bst.insert(17)
 // bst.inOrder(bst.root)
 // bst.postOrder(bst.root)
 // bst.levelOrder()
+
 // console.log(bst.min(bst.root))
 // console.log(bst.max(bst.root))
 // bst.delete(10)
