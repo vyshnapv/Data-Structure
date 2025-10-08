@@ -1,4 +1,4 @@
-class TrieNode{
+class Node{
     constructor(){
         this.children={};
         this.isEndOfWord=false;
@@ -7,14 +7,14 @@ class TrieNode{
 
 class Trie{
     constructor(){
-        this.root=new TrieNode();
+        this.root=new Node();
     }
     
     insert(word){
         let node=this.root;
         for(let char of word){
             if(!node.children[char]){
-                node.children[char]=new TrieNode()
+                node.children[char]=new Node()
             }
             node=node.children[char]
         }
@@ -57,12 +57,12 @@ class Trie{
         return suggestions
     }
     
-    _dfs(node,word,suggestions){
+    _dfs(node,prefix,suggestions){
         if(node.isEndOfWord){
-            suggestions.push(word)
+            suggestions.push(prefix)
         }
         for(let char in node.children){
-            this._dfs(node.children[char],word+char,suggestions)
+            this._dfs(node.children[char],prefix+char,suggestions)
         }
     }
     
@@ -80,7 +80,9 @@ class Trie{
         }
         return prefix
     }
-    
+
+
+    /////////
     delete(word) {
         this.deleteHelper(this.root, word, 0);
     }
@@ -105,6 +107,8 @@ class Trie{
        }
        return false;
    }
+
+   //////////
    
     containsBadWord(sentence) {
         const words = sentence.toLowerCase().split(" ")

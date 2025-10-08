@@ -46,27 +46,8 @@ class MaxHeap{
             index = parent
         }
    }
-   
-  heapifyDown(index) {
-        let largest = index;
-        let leftChildIndex = this.getLeftChildIndex(index);
-        let rightChildIndex = this.getRightChildIndex(index);
 
-        if (leftChildIndex !== null && this.heap[leftChildIndex] > this.heap[largest]) {
-            largest = leftChildIndex;
-        }
-        
-        if (rightChildIndex !== null && this.heap[rightChildIndex] > this.heap[largest]) {
-            largest = rightChildIndex;
-        }
-        
-        if (largest != index) {
-            this.swap(index, largest);
-            this.heapifyDown(largest)
-        }
-    }
-    
-  extractMax(){
+   extractMax(){
        if(this.heap.length===0){
            return null;
        }
@@ -79,6 +60,25 @@ class MaxHeap{
        this.heapifyDown(0)
        return root;
    }
+   
+  heapifyDown(index) {
+        let largest = index;
+        let leftChildIndex = this.getLeftChildIndex(index);
+        let rightChildIndex = this.getRightChildIndex(index);
+
+        if (leftChildIndex < this.heap.length && this.heap[leftChildIndex] > this.heap[largest]) {
+            largest = leftChildIndex;
+        }
+        
+        if (rightChildIndex < this.heap.length && this.heap[rightChildIndex] > this.heap[largest]) {
+            largest = rightChildIndex;
+        }
+        
+        if (largest != index) {
+            this.swap(index, largest);
+            this.heapifyDown(largest)
+        }
+    }
   
   deleteAt(index){
       if(index<0 || index>=this.heap.length){
@@ -131,5 +131,5 @@ let arr = [67, 89, 23, 9, 13, 56, 7, 19, 33, 4, 62];
 maxhp.buildHeap(arr);
 console.log("Heap built from array:", maxhp.heap);
 
-console.log("Deleted value at index 2:", maxhp.deleteAt(2));
-console.log("Heap after deletion:", maxhp.heap); 
+// console.log("Deleted value at index 2:", maxhp.deleteAt(2));
+// console.log("Heap after deletion:", maxhp.heap); 

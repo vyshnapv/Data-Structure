@@ -46,6 +46,20 @@ class MinHeap{
             index = parent
         }
    }
+
+   extractMin(){
+       if(this.heap.length===0){
+           return null;
+       }
+       if(this.heap.length===1){
+           return this.heap.pop()
+       }
+      
+       const root=this.heap[0];
+       this.heap[0]=this.heap.pop();
+       this.heapifyDown(0)
+       return root;
+   }
    
   heapifyDown(index) {
         let smallest = index;
@@ -65,20 +79,6 @@ class MinHeap{
             this.heapifyDown(smallest)
         }
     }
-    
-  extractMin(){
-       if(this.heap.length===0){
-           return null;
-       }
-       if(this.heap.length===1){
-           return this.heap.pop()
-       }
-      
-       const root=this.heap[0];
-       this.heap[0]=this.heap.pop();
-       this.heapifyDown(0)
-       return root;
-   }
   
   deleteAt(index){
       if(index<0 || index>=this.heap.length){

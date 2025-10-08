@@ -111,7 +111,7 @@ class BinarySearchTree{
    
    deleteNode(root,value){
        if(root===null){
-           return root;
+           return null;
        }
        
        if(value<root.value){
@@ -157,24 +157,24 @@ class BinarySearchTree{
         return Math.max(left,right)+1
     }
     
-     findClosest(target) {
-        if (!this.root) return null;
-
-        let closest = this.root.value;
-
-        function travers(root) {
-            if (!root) return;
-            if (Math.abs(root.value - target) < Math.abs(closest - target)) {
-                closest = root.value;
+     findClosest(root,target) {
+        if (!root){
+           return null;
+        }
+        let closest = root.value;
+        let current = root;
+        while(current) {
+            if (Math.abs(current.value - target) < Math.abs(closest - target)) {
+                closest = current.value;
             }
-            if (target < root.value) {
-                travers(root.left);
-            } else if (target > root.value) {
-                travers(root.right);
+            if (target < current.value) {
+                current=current.left;
+            } else if (target > current.value) {
+                current=current.right
+            }else{
+                return current.value
             }
         }
-
-        travers(this.root);
         return closest;
     }
     
@@ -190,24 +190,30 @@ class BinarySearchTree{
     
     findNode(root,value){
         if(!root){
-            return null;
+            return null
+        }else{
+            if(root.value===value){
+                return root;
+            }else if(value<root.value){
+                return this.findNode(root.left,value)
+            }else{
+                return this.findNode(root.right,value)
+            }
         }
-        
-        if(value===root.value){
-            return root
-        }
-        
-        return value<root.value?this.findNode(root.left,value)
-           :this.findNode(root.right,value)
     }
-    
-      findDept(root){
+
+       findDepth(root,value,depth=0){
        if(!root){
-           return 0
+           return -1
        }
-       return 1+Math.max(this.findDept(root.left),this.findDept(root.right))
+       if(root.value==value){
+           return depth
+       }else if(value<root.value){
+           return this.findDepth(root.left,value,depth+1)
+       }else{
+           return this.findDepth(root.right,value,depth+1)
+       }
    }
-   
     
     countLeaf(root){
         if(!root){
@@ -223,9 +229,12 @@ class BinarySearchTree{
         if(!root){
             return 0
         }
+
+        //let count=0
         
         if((root.left && !root.right) || (!root.left && root.right)){
             return 1+this.countSingleChild(root.left)+this.countSingleChild(root.right)
+            //count=1
         }
         return this.countSingleChild(root.left)+this.countSingleChild(root.right)
     }
@@ -314,6 +323,7 @@ bst.insert(17)
 // bst.levelOrder()
 
 // console.log(bst.isBst(bst.root))
+//bst.root.left=new Node(80)if we want to make isbst false then we do this
 
 // console.log(bst.findHeight(bst.root))
 
@@ -324,7 +334,7 @@ bst.insert(17)
 // console.log(bst.findDegree(5))
 // console.log(bst.findDegree(15))
 
-// console.log(bst.findDept(bst.root))
+// console.log(bst.findDepth(bst.root,67))
 
 // console.log(bst.countLeaf(bst.root))
 

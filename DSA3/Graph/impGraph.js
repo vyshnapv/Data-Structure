@@ -41,7 +41,11 @@ class Graph{
         }
         delete this.adjacencyList[vertex]
     }
-    
+
+    getVertices(){
+        return Object.keys(this.adjacencyList)
+    }
+
     getVertexCount(){
         return Object.keys(this.adjacencyList).length
     }
@@ -54,15 +58,18 @@ class Graph{
         return count/2
     }
     
-    getVertices(){
-        return Object.keys(this.adjacencyList)
-    }
-    
     getNeighbors(vertex){
         if(!this.adjacencyList[vertex]){
             return null;
         }
         return [...this.adjacencyList[vertex]]
+    }
+
+    calculateDegree(vertex){
+        if(!this.adjacencyList[vertex]){
+            return null;
+        }
+        return this.adjacencyList[vertex].size
     }
     
     findShortestPath(start,end){
@@ -92,7 +99,7 @@ class Graph{
     }
     
     dfs(start,visited =new Set(),result=[]){
-        if(!start){
+        if(!this.adjacencyList[start]){
             return 
         }
         console.log(start)
@@ -133,14 +140,11 @@ class Graph{
         
         return visited.size===vertices.length;
     }
-    
-    calculateDegree(vertex){
-        if(!this.adjacencyList[vertex]){
-            return null;
-        }
-        return this.adjacencyList[vertex].size
-    }
-    
+
+
+
+
+//////////
     hasCycle(){
         const visited=new Set();
         const dfsCycle=(vertex,parent)=>{
@@ -167,7 +171,11 @@ class Graph{
             }
             return false
     }
-    
+
+////////////
+
+
+
     display(){
         for(let vertex in this.adjacencyList){
             console.log(vertex + "->"+[...this.adjacencyList[vertex]])
